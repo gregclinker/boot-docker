@@ -24,7 +24,7 @@
 
     <!-- fabric8 version -->
     <fabric8.version>2.2.97</fabric8.version>
-    <docker.maven.plugin.version>0.14.2</docker.maven.plugin.version>
+    <docker.maven.plugin.version>0.20.0</docker.maven.plugin.version>
 
     <!-- Docker & Fabric8 Configs -->
     <docker.from>gregclinker/boot-docker</docker.from>
@@ -115,14 +115,20 @@
               <name>${docker.image}</name>
               <build>
                 <from>${docker.from}</from>
+		<entryPoint>
+      			<arg>java</arg>
+      			<arg>-Djava.security.egd=file:/dev/./urandom</arg>
+      			<arg>-jar</arg>
+      			<arg>/xxapp.jar</arg>
+   		</entryPoint>
+		<!-- <dockerFile>Dockerfile</dockerFile> -->
                 <assembly>
-                  <basedir>/deployments</basedir>
-                  <descriptorRef>hawt-app</descriptorRef>
-                </assembly>
-                <env>
+		  <descriptorRef>artifact</descriptorRef>
+                </assembly> 
+                <!-- <env>
                   <JAVA_LIB_DIR>/deployments/lib</JAVA_LIB_DIR>
                   <JAVA_MAIN_CLASS>org.apache.camel.cdi.Main</JAVA_MAIN_CLASS>
-                </env>
+                </env> -->
               </build>
             </image>
           </images>
