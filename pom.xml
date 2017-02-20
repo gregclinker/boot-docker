@@ -129,27 +129,9 @@
         </configuration>
       </plugin>
 
-      <!-- allows the route to be ran via 'mvn exec:java' -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <configuration>
-          <mainClass>org.apache.camel.cdi.Main</mainClass>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 
-  <!--
-  Default sample commands:
-
-  mvn -Pf8-build         ... build Docker images and create OpenShift deployment configs
-  mvn -Pf8-deploy        ... f8-build + push to Docker registry + applying deployment config to OpenShift
-  mvn -Pf8-local-deploy ... deployment for a single node setup without pushing to a registry
-
-  For individual goal usage please consult the fabric8 documentation
-  -->
   <profiles>
     <profile>
       <id>f8-build</id>
