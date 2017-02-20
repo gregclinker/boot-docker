@@ -8,7 +8,7 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <name>Spring Boot Docker</name>
+    <name>Boot Docker</name>
     <description>Spring Boot and Docker</description>
 
     <parent>
@@ -27,9 +27,9 @@
     <docker.maven.plugin.version>0.14.2</docker.maven.plugin.version>
 
     <!-- Docker & Fabric8 Configs -->
-    <docker.from>fabric8/s2i-java:1.2</docker.from>
-    <fabric8.dockerUser>gregclinker/</fabric8.dockerUser>
-    <docker.image>${fabric8.dockerUser}${project.artifactId}:${project.version}</docker.image>
+    <docker.from>gregclinker/boot-docker</docker.from>
+    <dockerUser>gregclinker/</dockerUser>
+    <docker.image>${dockerUser}${project.artifactId}:${project.version}</docker.image>
 
   </properties>
 
@@ -47,7 +47,7 @@
 
 
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>${project.artifactId}-${project.version}</finalName>
 
     <plugins>
       <!-- Compiler plugin enforces Java 1.7 compatibility and activates annotation processors -->
