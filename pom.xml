@@ -5,7 +5,7 @@
 
     <groupId>com.gsc</groupId>
     <artifactId>boot-docker</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>Boot Docker</name>
@@ -23,11 +23,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- fabric8 version -->
-    <fabric8.version>2.2.97</fabric8.version>
     <docker.maven.plugin.version>0.20.0</docker.maven.plugin.version>
 
     <!-- Docker & Fabric8 Configs -->
-    <docker.from>gregclinker/boot-docker</docker.from>
+    <!-- <docker.from>gregclinker/boot-docker</docker.from> -->
+    <docker.from>fabric8/s2i-java:1.2</docker.from>
     <dockerUser>gregclinker/</dockerUser>
     <docker.image>${dockerUser}${project.artifactId}:${project.version}</docker.image>
 
@@ -79,7 +79,7 @@
       			<arg>java</arg>
       			<arg>-Djava.security.egd=file:/dev/./urandom</arg>
       			<arg>-jar</arg>
-      			<arg>/xxapp.jar</arg>
+      			<arg>/maven/boot-docker-1.0.1.jar</arg>
    		</entryPoint>
 		<!-- <dockerFile>Dockerfile</dockerFile> -->
                 <assembly>
