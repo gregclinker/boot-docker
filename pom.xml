@@ -5,7 +5,7 @@
 
     <groupId>com.gsc</groupId>
     <artifactId>boot-docker</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>Boot Docker</name>
@@ -26,8 +26,7 @@
     <docker.maven.plugin.version>0.20.0</docker.maven.plugin.version>
 
     <!-- Docker & Fabric8 Configs -->
-    <!-- <docker.from>gregclinker/boot-docker</docker.from> -->
-    <docker.from>fabric8/s2i-java:1.2</docker.from>
+    <docker.from>springio/gs-spring-boot-docker</docker.from>
     <dockerUser>gregclinker/</dockerUser>
     <docker.image>${dockerUser}${project.artifactId}:${project.version}</docker.image>
 
@@ -79,16 +78,11 @@
       			<arg>java</arg>
       			<arg>-Djava.security.egd=file:/dev/./urandom</arg>
       			<arg>-jar</arg>
-      			<arg>/maven/boot-docker-1.0.1.jar</arg>
+      			<arg>/maven/${project.artifactId}-${project.version}.jar</arg>
    		</entryPoint>
-		<!-- <dockerFile>Dockerfile</dockerFile> -->
                 <assembly>
 		  <descriptorRef>artifact</descriptorRef>
                 </assembly> 
-                <!-- <env>
-                  <JAVA_LIB_DIR>/deployments/lib</JAVA_LIB_DIR>
-                  <JAVA_MAIN_CLASS>org.apache.camel.cdi.Main</JAVA_MAIN_CLASS>
-                </env> -->
               </build>
             </image>
           </images>
