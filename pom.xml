@@ -4,9 +4,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gsc</groupId>
+    <groupId>com.gregclinker</groupId>
     <artifactId>boot-docker</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>Boot Docker</name>
@@ -22,15 +22,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- fabric8 version -->
-        <docker.maven.plugin.version>0.20.0</docker.maven.plugin.version>
-
-        <!-- Docker & Fabric8 Configs -->
-        <docker.from>springio/gs-spring-boot-docker</docker.from>
-        <dockerUser>gregclinker/</dockerUser>
-        <docker.image>${dockerUser}${project.artifactId}:${project.version}</docker.image>
-
     </properties>
 
     <dependencies>
@@ -66,29 +57,9 @@
 
             <plugin>
                 <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>${docker.maven.plugin.version}</version>
-                <configuration>
-                    <images>
-                        <image>
-                            <name>${docker.image}</name>
-                            <build>
-                                <from>${docker.from}</from>
-                                <entryPoint>
-                                    <arg>java</arg>
-                                    <arg>-Djava.security.egd=file:/dev/./urandom</arg>
-                                    <arg>-jar</arg>
-                                    <arg>/maven/${project.artifactId}-${project.version}.jar</arg>
-                                </entryPoint>
-                                <assembly>
-                                    <descriptorRef>artifact</descriptorRef>
-                                </assembly>
-                            </build>
-                        </image>
-                    </images>
-                </configuration>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>3.2.28</version>
             </plugin>
-
         </plugins>
     </build>
 
